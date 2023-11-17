@@ -1,0 +1,87 @@
+Ruby on Rails installation:
+1. go to rubyinstaller.org
+2. download ruby
+3. irb -> interactive ruby console
+4. gem list bundler
+5. gem install bundler
+6. gem update bundler
+7. gem install sqlite3
+8. gem install webpacker
+9. gem install rails
+10. gem list rails
+
+To create a new rails app:
+> rails new app_name
+> cd app_name
+> rails server
+
+Rails overview:
+https://guides.rubyonrails.org/
+https://rubyonrails.org/
+https://weblog.rubyonrails.org/
+
+Creator of Rails: David Heinemeier Hansson
+https://dhh.dk/
+
+Ruby meetups:
+https://www.meetup.com/topics/ruby/
+
+Online code repository hosting services:
+https://github.com/
+https://bitbucket.org/
+
+Devise gem GitHub repository:
+https://github.com/heartcombo/devise
+
+Gems for Ruby and Ruby on Rails:
+https://rubygems.org/
+
+Rails is web application framework that follows MVC structure.
+MVC - Model View Controller - gives a clear separation of BL, UL and DL
+M - Data logic, DL
+V - UI logic, UL
+C - Business logic, BL
+
+Model + DB and Controller = backend
+V = front end
+
+Rails uses a middleman called ActiveRecords aka ORM - Object Relational Mapper to communicate between Rails AppCode and the DB.
+
+Model by default gives setters and getters to work with individual articles title and descriptions
+
+To fetch data and display flow:
+https://alpha-blog/article/1 -> will send the request to the routes.rb -> will transfer the request to the show action in articles_controller.rb -> this will transfer the flow to article.rb(model file) and fetch the data and send back the response to the controller which in turn send the response back to the show.html.erb view file and render the view back to the browser
+
+To debug:
+call byebug(ruby v6) / debugger(ruby v7) 
+anywhere in the code to get debug console
+Goto console and use dubgger and 'continue' to reload the rails app
+
+https://alpha-blog/article/1
+here 1 refers to id so this will be passed as params to the controller file.
+params datatype is hash.
+params has controller and action by default as a parameters
+@article = Article.find(params[:id])
+
+In show.html.erb to add and evaluate ruby code:
+<%= ruby_codes %>
+note:
+<%= %> - evaluates embedded ruby code and displays content
+<% %> - only runs the embedded ruby code
+<% end %> - used to end embedded ruby code fun
+
+https://guides.rubyonrails.org/form_helpers.html
+<% form_with scope: :articles, url: articles_path, local: true, data: {turbo: false} do |f| %>
+form_with uses ajax call for submission
+Here 
+scope -> model we are working with i.e :modelname
+url -> redirects to controller i.e controller_path
+local -> for local instead of http post request
+
+Front end - destroying delete articles
+
+REST -> Respresentational state transfer 
+-> mapping http requests (GET, POST, PUT?PATCH, DELETE) (i.e frontend) to the CRUD actions (i.e backend)
+
+Resourses provide Restful routes to rails resources
+

@@ -1,0 +1,264 @@
+print 1,2,3,"\n"
+puts 1,2,3 --> applies to all elements with new line
+p 123 --> applies to single element with new line
+p "123"
+
+puts 10.class
+puts "hi".class
+puts true.class
+puts false.class
+
+fn = "a"
+ln = "b"
+puts "fisrt name = #{fn} and last name = #{ln}"
+
+puts "Tiger".length
+puts "Tiger".size
+puts "Tiger".empty?
+puts "".empty?
+puts "Tiger".reverse
+puts "tiger".capitalize
+
+sentence = "Welcome to sea in a sea"
+puts sentence.sub("sea","land")
+sentence = "Welcome to sea in a sea"
+puts sentence.gsub("sea","land")
+
+puts "".methods
+
+name = "Forget me not"
+puts name[0,3]
+puts name[0..6]
+
+string = "Today is Saturday"
+string.include?("Saturday")
+
+#replace
+string[0..2] = ""
+p string
+
+string = "Today is Saturday"
+string.include?("Saturday")
+
+puts "ruby".upcase == "Ruby".upcase
+puts "ruby".casecmp?("Ruby")
+puts " ruby".strip
+
+"".startswith?
+"".endswith?
+#string to array
+arr = "abcd".split
+
+#array to string
+arr.join
+arr.join(",")
+
+#string to int
+"2".to_i
+
+#Check If A String Is A Number
+"123".match?(/\A-?\d+\Z/)
+
+#concat
+puts "hi"<<" "<<"there"
+
+"abcd".upcase
+# "ABCD"
+"ABCD".downcase
+# "abcd"
+
+a = %Q(aaa
+bbb
+ccc
+)
+b = <<-STRING
+aaa
+bbb
+ccc
+STRING
+
+title = "the lord of the rings"
+title.gsub(/\w+/) { |word| word.capitalize }
+# "The Lord Of The Rings"
+
+string = "We have 3 cats"
+string.gsub(/\d+/, "5")
+# "We have 5 cats"
+
+#remove \n char
+puts "What's your name?"
+name = gets.chomp
+
+str = "aaab"
+str.count("a")
+# 3
+str.count("b")
+# 1
+
+"123".match?(/\A\d+\Z/)
+# true
+"123bb".match?(/\A-?\d+\Z/)
+# false
+
+a = 1
+b = a
+puts a
+puts b
+a = 2
+puts a
+puts b
+
+puts "enter string"
+str = gets.chomp
+puts "string is #{str}"
+
+puts "enter number"
+num = gets.chomp
+puts "number is #{num.to_i}""
+
+puts 20.times {print "a"}
+puts 10.times { puts rand(10) }
+
+==============methods=================
+puts "enter 1st num:"
+num1 = gets.chomp
+puts "enter 2nd num:"
+num2 = gets.chomp
+def sum(n1,n2)
+    n1+n2
+end
+puts "Sum is #{sum(num1.to_i,num2.to_i)}"
+
+
+if !true
+    puts "true"
+else
+    puts "false"
+end
+
+===============array==================
+a = [1,2,3,4,5]
+p a
+p a[0]
+puts a[0]
+p a.last
+p a.last(2)
+p a.first
+p a.first(2)
+p a[-1]
+p a.methods
+
+rang = 1..10 # range from 1 to 10
+p rang.class
+p rang
+x = rang.to_a
+p x
+# putting ! aka bang at end of the method mutates the original element
+x.reverse!
+p x
+x.shuffle!
+p x
+
+a = (1..8).to_a
+p a
+a << 9 --> adds item at last
+a.append(10) --> adds item at last
+a.unshift(0) --> adds item at first
+
+arr = %w(Hi!, Welcome to Ruby.)
+p arr
+for i in arr
+    print i +" "
+end
+arr.each {|element| print element+" "}
+
+arr = %w(1 2 3 4 5)
+p arr
+numarr = []
+arr.each {|element| numarr.append(element.to_i)} 
+p numarr
+numarr.select {|e| p e%2==0}
+p numarr.select {|e| e.even?}
+
+====================Hash=====================
+# Hash is a key => value pair aka dictionary
+
+myDetails = {"name"=>"Ruby","year"=>1996}
+puts myDetails.class
+puts myDetails
+puts myDetails["name"]
+p myDetails.keys
+p myDetails.values
+myDetails.each do |key, value|
+    puts "Key = #{key} and value = #{value}"
+    puts "Key = #{key.class} and value = #{value.class}"
+end
+
+puts 
+# here name is refered to as Symbol commonly in rails
+myDetailsCopy = {name:"Ruby", year:1996}
+puts myDetailsCopy.class
+puts :name.class
+puts
+myDetailsCopy.each do |key, value|
+    puts "Key = #{key} and value = #{value}"
+    puts "Key = #{key.class} and value = #{value.class}"
+end
+puts
+myDetailsCopy[:inventor] = "Yukihiro Matsumoto"
+puts
+puts myDetailsCopy
+puts 
+myDetailsCopy.each { |key, value|
+    puts "Key = #{key} and value = #{value}"
+    puts "Key = #{key.class} and value = #{value.class}"
+}
+puts
+# select is used for filtering
+puts myDetailsCopy.select {|k,v| v.is_a?(String)}
+puts
+# each is used for extracting or modifing
+puts myDetailsCopy.each {|k,v| myDetailsCopy.delete(k) if v.is_a?(Numeric)}
+
+===================================================
+Casing:
+var,methods - snake_case
+class - CamelCase
+Intendation:
+2 spaces
+===================================================
+
+class Customer
+   % class variable
+   @@no_of_customers = 0
+
+   % constants
+   VAR1 = 100
+   
+   def initialize(id, name, addr)
+   
+      % instance var
+      @cust_id = id
+      @cust_name = name
+      @cust_addr = addr
+   end
+   def display_details()
+      puts "Customer id #@cust_id"
+      puts "Customer name #@cust_name"
+      puts "Customer address #@cust_addr"
+   end
+   def total_no_of_customers()
+      @@no_of_customers += 1
+      puts "Total number of customers: #@@no_of_customers"
+   end
+end
+
+# Create Objects
+cust1 = Customer.new("1", "John", "Wisdom Apartments, Ludhiya")
+cust2 = Customer.new("2", "Poul", "New Empire road, Khandala")
+
+# Call Methods
+cust1.total_no_of_customers()
+cust2.total_no_of_customers()
+
+===================================================

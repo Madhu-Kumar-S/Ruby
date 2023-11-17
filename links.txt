@@ -1,0 +1,20 @@
+https://www.javatpoint.com/ruby-tutorial
+https://www.javatpoint.com/ruby-on-rails-tutorial
+https://www.rubyguides.com/2018/01/ruby-string-methods/
+
+https://github.com/rubocop-hq/ruby-style-guide
+https://github.com/bbatsov/ruby-style-guide
+
+https://try.ruby-lang.org/
+
+https://www.rubydoc.info/github/codahale/bcrypt-ruby
+https://www.rubydoc.info/
+
+For installing gems:
+https://rubygems.org/
+
+For learning rails:
+https://rubyonrails.org/
+
+Ruby Form Helpers:
+https://guides.rubyonrails.org/form_helpers.html

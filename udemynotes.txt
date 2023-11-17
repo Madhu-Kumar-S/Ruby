@@ -1,0 +1,1095 @@
+Working with Strings:
+To start irb console:
+irb
+To exit the console:
+exit
+
+String concat structure:
+String1 + String2
+String1 + " " + String2 + String3
+
+To find out what class the object belongs to:
+Variable_name.class
+1.class # This will return integer, signifying that 1 is of type integer
+
+To find out methods available to an object:
+objectname.methods
+
+Some methods that can be used on objects:
+objectname.nil?
+objectname.empty?
+objectname.length
+objectname.reverse
+
+String interpolation (remember has to be within double quotes):
+name = "Mashrur"
+"My name is #{name}"
+**This will print out the value of name in the line "My name is...."
+
+To escape the evaluation of #{variablename} within a String, prepend with a \:
+\#{variablename}
+
+To get input from the command line use the following method:
+gets.chomp
+
+To assign the input to a variable so it can be referenced later on:
+variablename = gets.chomp
+
+=========
+
+Working with numbers:
+To add and display the value of 1 + 2:
+puts 1 + 2
+Different operations:
+1 + 2
+1 * 2
+1 / 2
+1 - 2
+1 % 2
+
+To indicate a number is a float instead of an integer include a . in the number:
+20 is an integer, 20.0 is a float
+or
+20.to_f
+
+Methods you can use:
+object.odd?
+22.odd?
+object.even?
+22.even?
+Comparisons:
+a == b
+1 == 2
+3 == 3
+5 < 2
+2 <= 5
+5 > 2
+5 && 6
+5 || 6
+
+Generate a random number between 0 and less than 10:
+rand(10)
+
+To convert an string object to integer:
+objectname.to_i
+"5".to_i
+
+To convert an object to string:
+objectname.to_s
+5.to_s
+
+==============
+Methods and Branching:
+
+Structure of an if condition:
+if condition
+  #execute logic
+end
+# variant
+if condition
+  #execute logic
+else
+  #execute different logic
+end
+# variant
+if condition
+  # execute logic
+elsif #different condition
+  # execute logic 2
+else 
+  # execute logic 3
+end
+Method code samples:
+
+def multiply(first_number, second_number)
+  first_number.to_f * second_number.to_f      
+end
+ 
+def divide(first_number, second_number)
+  first_number.to_f / second_number.to_f      
+end
+ 
+def subtract(first_number, second_number)
+  second_number.to_f - first_number.to_f      
+end
+ 
+def mod(first_number, second_number)
+  first_number.to_f % second_number.to_f      
+end
+Branching execution code sample:
+
+puts "What do you want to do? 1) multiply 2) divide 3) subtract 4) find remainder"
+prompt = gets.chomp
+puts "Enter in your first number"
+first_number = gets.chomp
+puts "Enter in your second number"
+second_number = gets.chomp
+if prompt == '1'
+  puts "You have chosen to multiply #{first_number} with #{second_number}"
+  result = multiply(first_number, second_number)
+elsif prompt == '2'
+  puts "You have chosen to divide"
+  result = divide(first_number, second_number)
+elsif prompt == '3'
+  puts "You have chosen to subtract"
+  result = subtract(first_number, second_number)
+elsif prompt == '4'
+  puts "You have chosen to find the remainder"
+  result = mod(first_number, second_number)
+else
+  puts "You have made an invalid choice"
+end
+
+=========================
+Arrays and Iterators:
+Array, created by including elements within square brackets:
+a = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+The index for an array starts with 0, so in the array above a[0] is 1
+
+Some methods you can use on arrays:
+arrayname.empty?
+arrayname.include?(itemname)
+arrayname.reverse
+arrayname.reverse! # use ! at the end to change the original array
+arrayname.shuffle
+arrayname.push(30) # will append new element 30 to the end array
+arrayname << 25 # << known as shovel operator will also append new element to the end of the array
+arrayname.unshift("someelement") # will add element "some element" to the beginning of the array
+arrayname.pop # will remove the last element of the array and return 1
+arrayname.uniq # will remove all the duplicates and display (will not change the original array)
+arrayname.uniq! # will remove all the duplicates in the original array
+
+A range:
+(0..25).to_a
+will create an array with elements from value 0 to 25
+(0..99).to_a.shuffle!
+will create an array with elements from value 0 to 99 in random order
+
+To loop through an array named y using the .each method and print out the value of each element:
+y.each { |i| puts i }
+In plain terms: For each element i in array y print the value of i
+
+To execute iteration through an array called names using a block:
+names.each do |randomvariablename| # starts the do block
+
+puts "Hello #{randomvariablename}" # executes code for each element
+end # ends the do block
+
+To capitalize (or use another method) on each element of array called names:
+names.each { |randomvariablename| puts "Hello #{randomvariablename.capitalize}" }
+
+Using the select method to pickup all the odd numbers from an array y:
+y.select { |number| number.odd? } # selects the value and returns it only if the condition is met
+
+To join the elements of an array named p:
+p.join
+
+To join the elements of an array with space in between each element:
+p.join(" ")
+
+To join the elements of an array with dash in between each element:
+p.join("-")
+
+========================
+Hashes:
+To create a hash called my_details include the elements within { }:
+
+my_details = {'name' => 'mashrur', 'favcolor' => 'red'}
+
+To access the value and notify me what favcolor is:
+my_details["favcolor"]
+
+Alternate syntax to create key, value pairs in hash:
+myhash = {a: 1, b: 2, c: 3, d: 4}
+But this will create symbols a, b, c and d (not strings) as keys
+
+To access the value for key c above:
+myhash[:c]
+
+To add a key, value pair to the hash above:
+myhash[:d] = 7
+myhash[:name] = "Mashrur"
+
+To delete a key, value pair simply delete the key:
+myhash.delete(:d)
+
+To list the keys in a hash, followed by values of the hash:
+myhash.keys
+myhash.values
+
+To iterate through a hash using .each method and print out value:
+myhash.each { |somekey, somevalue| puts somevalue }
+
+To iterate through a hash using .each method and print out both key and value in friendly format:
+myhash.each { |somekey, somevalue| puts "The key is #{somekey} and the value is #{somevalue}" }
+
+To iterate through and delete a items from a hash based on a condition (in the condition below if the value is greater than 3:
+myhash.each { |k, v| myhash.delete(k) if v > 3 }
+
+Use select method to display items only if value of the item is odd
+myhash.select { |k, v| v.odd? }
+
+=================================
+Ruby Style Guide:
+Link for style guide:
+https://github.com/rubocop-hq/ruby-style-guide
+https://github.com/bbatsov/ruby-style-guide
+
+Soft tabs: 2 spaces, convert tabs to spaces
+
+class names: CamelCase
+class ThisIsCamelCase
+  # code for class
+end
+file names, method names and variable names: snake_case
+
+Variable assignment:
+this_is_snake_case = "snake case"
+
+Method definition:
+def method_name
+  # write code here
+end
+
+Ruby file names:
+this_is_snake_case.rb
+
+==================================================
+Introduction to Object Oriented Programming:
+Object-oriented programming (OOP) is a programming paradigm that uses objects and their interactions to design and program applications
+
+- Allows the program to block off areas of code that perform certain tasks independently of other areas in the application.
+
+Encapsulation - concept of blocking off areas of code and not making it available to the rest of the program
+
+Abstraction - is simplifying a complex process of a program, an enterprise software solution for example by modeling classes appropriate for it
+
+Inheritance - is used where a class inherits the behavior of another class, referred to as the superclass
+
+Polymorphism - is when a class inherits the behaviors of another class, but has the ability to not inherit everything and change some of it’s inherited behaviors. For example to write a method that does something differently from the inherited method
+
+Classes - It is a blueprint that describes the state and behavior that the objects of the class all share. A class can be used to create many objects. Objects created at runtime from a class are called instances of that particular class.
+
+Example of a user class
+
+class User
+  attr_accessor :name, :email
+  def initialize(name, email)
+    @name = name
+    @email = email
+  end
+  def run
+    puts "Hey I'm running"
+  end
+  def self.identify_yourself
+    puts "Hey I am a class method"
+  end
+end
+user = User.new("mashrur", "mashrur@example.com")
+user.run
+User.identify_youself # to run this class method you don't need an instance of user 
+                      # you can directly call the class User 
+
+=============================================================
+Attributes, getters, setters:
+class Student
+  attr_accessor :first_name, :last_name, :email, :username, :password
+ 
+  def initialize(firstname, lastname, username, email, password)
+    @first_name = firstname
+    @last_name = lastname
+    @username = username
+    @email = email
+    @password = password
+  end
+ 
+  def to_s
+    "First name: #{@first_name}, Last name: #{@last_name}, Username: #{@username},
+                  email address: #{@email}"
+  end
+ 
+end
+ 
+mashrur = Student.new("Mashrur", "Hossain", "mashrur1", "mashrur@example.com",
+                      "password1")
+john = Student.new("John", "Doe", "john1", "john1@example.com",
+                      "password2")
+puts mashrur
+puts john
+mashrur.last_name = john.last_name
+puts "Mashrur is altered"
+puts mashrur
+
+===================================================
+Final Ruby project 1 - Text follow-up
+You can find information on bcrypt and the hashing algorithm it uses here https://www.rubydoc.info/github/codahale/bcrypt-ruby
+
+You can also find the code used in the video there (posted below) along with installation instructions for bcrypt gem:
+
+require 'bcrypt'
+ 
+my_password = BCrypt::Password.create("my password")
+  #=> "$2a$10$vI8aWBnW3fID.ZQ4/zo1G.q1lRps.9cGLcZEiGDMVr5yUP1KUOYTa"
+ 
+my_password.version              #=> "2a"
+my_password.cost                 #=> 10
+my_password == "my password"     #=> true
+my_password == "not my password" #=> false
+ 
+# my_password = BCrypt::Password.new("$2a$10$vI8aWBnW3fID.ZQ4/zo1G.q1lRps.9cGLcZEiGDMVr5yUP1KUOYTa")
+# my_password == "my password"     #=> true
+# my_password == "not my password" #=> false
+
+==============================================================
+Final Ruby project 2 - Text follow-up
+We created a crud.rb file and filled it in:
+
+require 'bundler/inline'
+ 
+gemfile true do
+ source 'http://rubygems.org'
+ gem 'bcrypt'
+end
+ 
+require 'bcrypt'
+ 
+users = [
+          { username: "mashrur", password: "password1" },
+          { username: "jack", password: "password2" },
+          { username: "arya", password: "password3" },
+          { username: "jonshow", password: "password4" },
+          { username: "heisenberg", password: "password5" }
+        ]
+ 
+def create_hash_digest(password)
+  BCrypt::Password.create(password)
+end
+ 
+def verify_hash_digest(password)
+  BCrypt::Password.new(password)
+end
+ 
+def create_secure_users(list_of_users)
+  list_of_users.each do |user_record|
+    user_record[:password] = create_hash_digest(user_record[:password])
+  end
+  list_of_users
+end
+==============================================================
+Final Ruby project 3 - Text follow-up
+Update the crud.rb file to turn it into a module, completed file below:
+
+require 'bundler/inline'
+ 
+gemfile true do
+ source 'http://rubygems.org'
+ gem 'bcrypt'
+end
+ 
+module Crud
+  require 'bcrypt'
+  puts "Module CRUD activated"
+ 
+  def Crud.create_hash_digest(password)
+    BCrypt::Password.create(password)
+  end
+ 
+  def Crud.verify_hash_digest(password)
+    BCrypt::Password.new(password)
+  end
+ 
+  def Crud.create_secure_users(list_of_users)
+    list_of_users.each do |user_record|
+      user_record[:password] = create_hash_digest(user_record[:password])
+    end
+    list_of_users
+  end
+ 
+  def Crud.authenticate_user(username, password, list_of_users)
+    list_of_users.each do |user_record|
+      if user_record[:username] == username && verify_hash_digest(user_record[:password]) == password
+        return user_record
+      end
+    end
+    "Credentials were not correct"
+  end
+end
+In front of all the method names we used a class reference, you can replace this or use self. in their place, that is how you reference class methods. The code in the main.rb file would still work if you use self.create_secure_users for example. This is a good opportunity for you to read up on the difference between "class methods" and "instance methods". We will see how to convert these into instance methods in the next video by using the module as a mixin for our student object.
+
+We then updated the main.rb file (or wherever you want to use the module from):
+
+require_relative 'crud'
+ 
+users = [
+          { username: "mashrur", password: "password1" },
+          { username: "jack", password: "password2" },
+          { username: "arya", password: "password3" },
+          { username: "jonshow", password: "password4" },
+          { username: "heisenberg", password: "password5" }
+        ]
+ 
+hashed_users = Crud.create_secure_users(users)
+puts hashed_users
+==============================================================
+Final Ruby project 4 - Text follow-up
+We ended up with a final crud.rb file with our Crud module which looked like below (if not using repl, you can leave out the require bundler and bcrypt gem installation parts on top):
+
+require 'bundler/inline'
+ 
+gemfile true do
+ source 'http://rubygems.org'
+ gem 'bcrypt'
+end
+ 
+module Crud
+  require 'bcrypt'
+  puts "Module CRUD activated"
+ 
+  def create_hash_digest(password)
+    BCrypt::Password.create(password)
+  end
+ 
+  def verify_hash_digest(password)
+    BCrypt::Password.new(password)
+  end
+ 
+  def create_secure_users(list_of_users)
+    list_of_users.each do |user_record|
+      user_record[:password] = create_hash_digest(user_record[:password])
+    end
+    list_of_users
+  end
+ 
+  def authenticate_user(username, password, list_of_users)
+    list_of_users.each do |user_record|
+      if user_record[:username] == username && verify_hash_digest(user_record[:password]) == password
+        return user_record
+      end
+    end
+    "Credentials were not correct"
+  end
+end
+Below was my student.rb class:
+
+require_relative 'crud'
+ 
+class Student
+  include Crud
+  attr_accessor :first_name, :last_name, :email, :username, :password
+ 
+  def initialize(firstname, lastname, username, email, password)
+    @first_name = firstname
+    @last_name = lastname
+    @username = username
+    @email = email
+    @password = password
+  end
+ 
+  def to_s
+    "First name: #{@first_name}, Last name: #{@last_name}, Username: #{@username},
+                  email address: #{@email}"
+  end
+ 
+end
+ 
+mashrur = Student.new("Mashrur", "Hossain", "mashrur1", "mashrur@example.com",
+                      "password1")
+john = Student.new("John", "Doe", "john1", "john1@example.com",
+                      "password2")
+ 
+hashed_password = mashrur.create_hash_digest(mashrur.password)
+ 
+puts hashed_password
+Congratulations on having completed section 2 and learning about the Ruby programming language! We will start with Ruby on Rails and web application development in the next section, see you there.
+==============================================================
+Ruby on Rails kickoff:
+
+Rails overview:
+https://guides.rubyonrails.org/
+https://rubyonrails.org/
+https://weblog.rubyonrails.org/
+
+Creator of Rails: David Heinemeier Hansson
+https://dhh.dk/
+
+Ruby meetups:
+https://www.meetup.com/topics/ruby/
+
+Online code repository hosting services:
+https://github.com/
+https://bitbucket.org/
+
+Devise gem GitHub repository:
+https://github.com/heartcombo/devise
+
+Gems for Ruby and Ruby on Rails:
+https://rubygems.org/
+
+==============================================================
+Model, View, Controller and Rails App Structure:
+MVC - Model, View, Controller
+
+General flow of Rails application:
+
+-> Request made at browser
+
+-> Request received at router of rails application
+
+-> Request routed to appropriate action in a controller
+
+-> Controller#action either renders a view template or communicates with model
+
+-> Model communicates with database
+
+-> Model sends back information to controller
+
+-> Controller renders view and send backs as response
+==============================================================
+Root route, controller and more MVC:
+
+To set a root route, navigate to config/routes.rb file and enter in the following code -> root 'pages#home'
+
+In order to preview the application, you will need to start the rails server. 
+rails_app_name> rails server
+or
+rails_app_name> rails s
+
+Once the server starts you can open up a browser window and type in localhost:3000 to preview the app.
+
+Back to the app, in order for the code to work there will need to be a pages controller and a home action within it.
+
+Create a pages controller by navigating to the terminal/command line and typing in the following command from your application directory:
+> rails generate controller controller_name
+eg: > rails generate controller pages
+
+There should now be a pages_controller.rb file under app/controllers folder.
+
+Open up this file and add the home action to it with a rendering of 'Hello World!' like below:
+
+def home
+  render html: 'Hello World!'
+end
+
+Once you save this file and reload the browser preview, Hello World! should be displayed in the browser.
+
+In order to do this the conventional way using views remove the code within the home action and leave it as an empty method/action like below:
+
+def home
+end
+
+This will expect a home.html.erb template under the pages folder under views. This pages folder under the views folder was created when the pages controller was generated.
+
+Within this app/views/pages folder, create a new file called home.html.erb and add in the following code inside the file:
+
+Hello World!
+
+Once you save this file and preview it from the browser, it should still say Hello World! as expected.
+
+Congratulations, you have made your Rails application say 'Hello World!'
+==============================================================
+
+Structure of a Rails application:
+You can find the details of the individual folders in a Rails application (when it's created) here: https://guides.rubyonrails.org/getting_started.html
+
+Scroll down to section 3.2, skip the part about creating the new application and then you will find a listing of all the folders and their purpose in-depth.
+==============================================================
+Version control with Git:
+Git references:
+
+Official site: https://git-scm.com/
+Free online Pro Git book: https://git-scm.com/book/en/v2
+Reference manual: https://git-scm.com/docs
+
+Upon download and installation in your local machine (AWS Cloud9 comes pre-installed with Git), first time setup steps are required (only one time) for your git installation (for all environments):
+
+git config --global user.name "Your name"
+git config --global user.email youremail@example.com
+replace "Your name" and youremail@example.com above with your actual name and email address which you want shown on your repos.
+
+To display git config settings, use the following command:
+git config --list
+
+Some useful git commands:
+Your rails application already comes initialized with a Git repository. But if you have to initialize a git repository for an application you are working on, you can use the following command (do this from within the application directory):
+git init
+
+Note: if using Rails 5 or above, your application will already come with a git repository initiated, if you initiate a new one, it'll simply do the same step again.
+
+To add/track all files, use the following command:
+git add -A
+
+To commit changes/updates/additions to repository, use the following command:
+git commit -m "A useful message to help remember details of commit"
+
+To check current state of file updates with already tracked/committed code in repo, check git status with the following command:
+git status
+
+To reject latest changes, you can use the following command:
+git checkout -f
+
+Sites to create free online code repositories:
+github.com
+bitbucket.org
+
+==============================================================
+Setup online code repo with Github:
+You can sign-up for a GitHub account at https://github.com/
+Once signed-up, you can follow the steps in the video to create a new repository for your application.
+If you chose SSH as the option to push existing repo, you will need to set up an SSH key unless you already have one.
+
+To display your public SSH key:
+cat ~/.ssh/id_rsa.pub
+
+If you don't have an SSH public key or are not sure, checkout the instructions here: https://help.github.com/en/github/authenticating-to-github/checking-for-existing-ssh-keys
+
+When creating a GitHub repo for your application, you can click on the SSH button, then push existing repo:
+git remote add origin git@github.com:yourgithubaccountname/test-app-6.git
+git push -u origin master 
+# Remember you only need to use above command the first time
+
+To view remotes setup in your environment (from your app directory):
+git remote -v
+
+For future pushes to repository:
+git push origin master
+==============================================================
+Learn and practice HTML and CSS references
+HTML basics: https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/HTML_basics
+
+CSS basics: https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/CSS_basics
+
+HTML tables: https://developer.mozilla.org/en-US/docs/Learn/HTML/Tables
+
+HTML forms: https://developer.mozilla.org/en-US/docs/Learn/Forms/Your_first_form
+
+Alternate resource to learn HTML and CSS together while building a website: https://learn.shayhowe.com/html-css/
+==============================================================
+Add About page and homework assignment:
+To add an About page to the application, first add the following route to the config/routes.rb folder:
+get 'about', to: 'pages#about'
+
+You can then add the about action to the pages controller like below:
+def about
+end
+
+Now you will need a view template, so add an about.html.erb file under the app/views/pages folder and fill in some text to display within it:
+<h1>This is the About page</h1>
+
+Once you save the file, you'll be able to preview this page by appending /about to your homepage. In your local machine it would be localhost:3000/about
+==============================================================
+Production Deploy:
+You can sign-up for a heroku account at: https://www.heroku.com/
+
+Preparation for production deployment:
+- Remove sqlite3 gem from top of your Gemfile and add to within group :development, :test do block
+
+Mine looks like below:
+// this is only for local env
+group :development, :test do
+  gem 'sqlite3', '~> 1.4'
+  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+end
+
+- Create a group production ->
+// pg is a Postgre SQL gem to deal with herokus
+group :production do
+  gem 'pg'
+end
+
+- Save Gemfile
+- Run bundle install --without production to update Gemfile.lock file
+- Commit your changes to git repo ->
+git add -A
+git commit -m "Make app production ready"
+
+You can check if you already have Heroku CLI installed by going to your terminal and typing in:
+heroku --version
+or simply heroku
+
+You can get the Heroku CLI from here: https://devcenter.heroku.com/articles/heroku-cli
+
+Check Heroku installation:
+heroku --version
+heroku # for list of common heroku commands
+
+Once installed, login to your Heroku account from your application directory:
+heroku login
+
+To create a new production version of your app hosted in Heroku, use the following command:
+heroku create
+
+To push your application code to Heroku and deploy your app, use the command below, but make sure all your code changes are committed by checking git status first (following the steps in the beginning of this text lecture) ->
+git push heroku master
+
+To change the name of your application ->
+heroku rename newnameofyourapp
+replace newnameofyourapp above with the name you'd like to give your app
+
+Your app will then be accessible from the following browser URL ->
+https://newnameofyourapp.herokuapp.com
+==============================================================
+CRUD and scaffold generators:
+Query language to communicate with database: SQL (Structured Query Language)
+
+CRUD actions:
+C - Create
+R - Read
+U - Update
+D - Delete
+
+Scaffold generator command to create an article model (with two attributes), articles controller, views for articles and migration file to create articles table:
+rails generate scaffold Article title:string description:text
+
+To create articles table:
+rails db:migrate
+
+Command to see routes presented in a viewer-friendly way:
+rails routes --expanded
+
+The line resources :articles in the config/routes.rb file provides the following routes:
+- index of articles (GET request)
+- new article (GET)
+- create article (POST)
+- edit article (GET)
+- update article (PUT and PATCH)
+- show article (GET)
+- delete article (DELETE)
+
+From UI perspective ->
+- index lists all the articles in the articles table in the database of the app
+- new article deals with the form to enter in new article details
+- create handles the submission of the items in the new article form
+- edit article deals with the form to enter edited information for an existing article
+- update article deals with the submission of the edit article form
+- show article displays an individual article based on selection
+- delete article deletes an article from the articles table
+
+In preparation for the next section, learn and practice SQL here: https://www.w3schools.com/sql/
+
+==============================================================
+Intro to tables, migrations, rails conventions:
+You can take a look at all code-changes made in this video at: https://github.com/udemyrailscourse/alpha-blog-6/commit/05b1ad6dd72231f3d2ea378479d88d4bf68848ad
+The additions are shown in green and removals are shown in red.
+
+Rails naming conventions article resource:
+Model name: article
+Class name: Article -> Capitalized A and singular, CamelCase
+File name: article.rb -> singular and all lowercase, snake_case
+Table name: articles -> plural of model name and all lowercase
+
+Additional example:
+Model name: user
+Class name: User -> Capitalized U and singular, CamelCase
+File name: user.rb -> singular and all lowercase, snake_case
+Table name: users -> plural of model name
+
+Generate a migration to create a table (in this example articles):
+rails generate migration create_articles
+
+To add attributes for the table in the migration file, add the following inside create_table block:
+t.string :title
+
+To run the migration file, run the following command from the terminal:
+rails db:migrate
+The first time you run the migration file, it will create the database, the articles table and a schema.rb file. For 2nd time it wont.
+
+To rollback or undo the changes made by the last migration file that was run, you may use the following command:
+rails db:rollback
+
+If you have run the rollback step, then you can update the previous migration file and add the following line to add a description attribute (column) to the articles table:
+t.text :description
+To run the newly edited migration file again, you can run rails db:migrate
+Note: This above line will only work if you had rolled back the prior migration.
+
+To generate a new migration file to add or make changes to your articles table you can generate a new file:
+rails generate migration name_of_migration_file
+
+Then within the def change method in the migration file you can add the following lines:
+add_column :articles, :created_at, :datetime
+add_column :articles, :updated_at, :datetime
+You can run the newly created migrations file by running rails db:migrate from the command line and check out the schema.rb file to check that the changes were reflected properly.
+
+--my notes--
+1. create migration file
+rails generate migration create_tablename
+2. run migration file 
+rails db:migrate -> this in turn will create a schema with the fields given into a new table
+3. if we want to add something to the table then you should not modify already created migration file instead you can create new migration file and add the code base.
+4. then run the migration file which in turn it will reflect in the schema with the existing table.
+==============================================================
+Models and rails console:
+To create an article model, create an article.rb model file under app/models folder and fill it in:
+
+class Article < ApplicationRecord
+
+end
+
+Note: Make sure ApplicationRecord is CamelCase.
+
+Now, provided you have the articles table already, you can use the Rails console and work with the articles table using this article.rb model file.
+
+To start the rails console: type rails console/rails c/irb from the terminal.
+To exit out of the console: type exit/quit followed by enter/return.
+
+You can test out your connection to the articles table by typing the following command from within your rails console:
+
+Article.all
+If you get an empty collection/array-like structure as a response, you're good to go.
+
+To create a new article, you can use any of the following methods:
+
+1 -> using class:
+Article.create(title: "first article", description: "Description of first article") # make sure Article is capitalized if using this method
+
+2 -> using object of class:
+article = Article.new
+article.title = "second article"
+article.description = "description of second article"
+article.save
+
+3 -> passing args to class:
+article = Article.new(title: "third article", description: "description of third article")
+article.save
+To check all the articles that exist in your articles table, you can use the following command:
+Article.all
+==============================================================
+CRUD ops from rails console:
+To find an article by id you can use the find method like below:
+
+Article.find(1) # replace 1 with id of article you want to find
+Article.first
+Article.last
+
+You can save this to a variable and use it like below
+
+article = Article.find(1)
+article.title # to display (get) the title
+article.description # to display (get) the description
+
+You can use the methods below to view the first and last articles of the articles table:
+
+Article.first # display the first article in the articles table
+Article.last # display the last article in the articles table
+
+You can update an article by finding it first and then using setters for the attributes that the model provides like below:
+
+article = Article.find(id of article you want to edit)
+article.title = "new title"
+article.description = "new description"
+article.save
+
+You can delete an article by using the destroy method. A sample sequence could be like below:
+
+article = Article.find(id of article you want to delete)
+article.destroy
+==============================================================
+Validations:
+You can view the code added for the validations to the article model here: https://github.com/udemyrailscourse/alpha-blog-6/commit/2efe9c071f85659bdb3e023871c55433d2a253bd
+
+Validations enforce constraints on your model so you can have greater control on what you are allowing as data to be saved in your database/tables.
+
+add this in model:
+validates :field/columnName, presence: true, length: {minimum: 5, maximum: 10}
+save file
+rails c
+reload! -> to reload/changes to be reflected after saving model file
+article.error.full_messages -> gives readable errors
+
+https://guides.rubyonrails.org/active_record_validations.html
+search for: active record validations
+==============================================================
+Show articles feature:
+You can find all the code added for the show feature for our articles resource here: https://github.com/udemyrailscourse/alpha-blog-6/commit/7304bca894202f78535b4abdc870d42f6a254967
+
+Show actions are usually used to display individual items in a resource. For example:
+
+- a specific article from an articles table
+- a specific user's profile from a social media app
+- details of a specific stock from a stocks table
+- a specific recipe from a list of recipes
+
+The steps are to -
+
+1) Have a route for it
+2) Have the corresponding controller/action that the route directs the request to
+3) Have a corresponding view to display to the user who makes the request
+
+The code details for each step are in the link provided at the beginning of this text resource. As a reminder: the red highlighted area are removals and the green highlighted area are additions.
+
+==============================================================
+Articles index:
+The code added in the video to build this articles listing feature can be found here: https://github.com/udemyrailscourse/alpha-blog-6/commit/71c5d3866d77b3add9829af8c8d30f027a46e070
+
+The index action in a controller is used to display a summarized listing of all the items in a table. If there are big blog posts as each item, then the index would usually contain either a summary of the post or a few hundred characters that link to the actual post.
+
+Examples:
+- articles listing
+- users listing
+- friends listing
+- stocks listing
+- photos listing
+- listing of people you are following on IG etc.
+
+All the code added to build this - route, controller/action, view template is provided in the link at the beginning of this text resource.
+==============================================================
+Forms:
+To create a new article from the browser (front-end), you'll need a form to get input from the user. Since we're dealing with articles which have title and description, you want to give the user an ability to fill-in the title and description of the article they are trying to create. The form is displayed via the new route/action and the form submission is handled by the create action.
+
+First you'll need to expose these two routes in the config/routes.rb file, so the file looks like below:
+
+Rails.application.routes.draw do   root 'pages#home'   get 'about', to: 'pages#about'   resources :articles, only: [:show, :index, :new, :create] end
+
+You will need to add the new and create actions in the articles_controller.rb file like below:
+
+def new
+end
+
+def create 
+end  
+You will also need to create a view template for the new view. So, in the app/views/articles folder create a new file called new.html.erb and fill it in like below:
+
+<h1>Create a new article</h1>
+
+<%= form_with scope: :article, url: articles_path, local: true do |f| %>
+  <p> 
+    <%= f.label :title %><br/> 
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :description %><br/> 
+    <%= f.text_area :description %> 
+  </p>
+  <p>
+    <%= f.submit %> 
+  </p>
+<% end %>
+==============================================================
+Create action - text references
+The create action is used to handle the form submission from the new article creation form. The code added for the entire new article creation process to this point can be found here:
+
+https://github.com/udemyrailscourse/alpha-blog-6/commit/931d7f3f1287b99084d9d0a49bd45fc5c9ba43eb
+
+Things to keep in mind: Strong parameters - whitelisting of data (values associated with attributes) that are received through the params hash. During this process for articles you had to 'whitelist' the data coming through for the title and description fields.
+==============================================================
+Messaging - validation and flash messages - text references
+All the code updates made in the video can be found here: https://github.com/udemyrailscourse/alpha-blog-6/commit/83360929b5b1feb45491ecb7c9f8aa9285ab0c64
+
+In order to display the validation messages, we have to add an if else block to our create action. This is done to check for if the save happened, if not (else clause) then we display the new form again with the messages displayed. The create action would look like below:
+
+def create
+  @article = Article.new(params.require(:article).permit(:title, :description))
+  if @article.save
+    redirect_to @article 
+  else
+    render 'new'
+  end
+end
+In order to display the messages, we add the following code block to the new.html.erb template (above the form code):
+
+<% if @article.errors.any? %> 
+  <h2>The following errors prevented the article from being saved</h2> 
+  <ul> 
+    <% @article.errors.full_messages.each do |msg| %> 
+      <li><%= msg %></li> 
+    <% end %> 
+  </ul>
+<% end %>
+To make the code work for the first time when the new form is displayed, we have to initiate an @article instance variable in the new action of the articles controller. Otherwise, the code @article.errors.any? will fail (as there is no @article instance variable available at the time).
+
+Therefore, update the new action like below:
+
+def new
+  @article = Article.new
+end
+To display messages to the user using the flash messages helper, update the create action with the additional flash line like below:
+
+def create
+  @article = Article.new(params.require(:article).permit(:title, :description))
+  if @article.save
+    flash[:notice] = "Article was created successfully."
+    redirect_to @article 
+  else
+    render 'new'
+  end
+end
+Once the flash helper has the key of 'notice' which has value of 'Article was created successfully' via the create action, you can use this helper in your views (upon the redirect) to display the message to the user. Therefore we add the following code to the app/views/layouts/application.html.erb file within the body tag:
+
+<% flash.each do |name, msg| %> 
+  <%= msg %> 
+<% end %>
+==============================================================
+Edit and update - text references and code
+The process of editing an existing article and updating the article in the articles table utilizes the edit and update actions. The standard process is as follows:
+
+1. Expose edit and update routes.
+
+2. Add edit and and update actions in the articles controller.
+
+3. Create an edit template (form) in the app/views/articles folder.
+
+4. Use the edit action to find the article to edit, display the existing article details in the edit form.
+
+5. Use the update action to find the article in the db. Whitelist the new title and description fields and if there are no validation errors, then update the article in the articles table with the new data.
+
+The completed code added in the video for the entire process can be found here: https://github.com/udemyrailscourse/alpha-blog-6/commit/a7b9797b08dbc7fc5272f459b3659b9df289e354
+==============================================================
+Delete articles - text references
+Deleting articles can be accomplished using the destroy action in the articles controller. The standard deletion process would look like below:
+
+1. Expose the destroy route.
+
+2. Add the destroy action in the articles controller.
+
+3. Find the article to delete and delete it using the destroy method within the destroy action.
+
+All the code added in the video for the destroy action can be found here: https://github.com/udemyrailscourse/alpha-blog-6/commit/a1634510396abc38d049ba04e84368a397efe5ab
+
+Please review the video if you want to learn more about the completion of all the REST routes for our articles resource.
+==============================================================
+Layout links: text references
+We added a lot of links to the application in order to perform all the actions for articles, along with adding the ability to navigate around the application. These were accomplished using layout links. All code changes/additions made during the video to cleanup the look of the application can be found here: https://github.com/udemyrailscourse/alpha-blog-6/commit/cf48891f1561626d5c3d64e5ef6e56da3ab66fc7
+==============================================================
+DRY code - text references
+DRY - Don't Repeat Yourself - code can be accomplished by refactoring or 'extracting away code redundancies'. We accomplished a significant amount of this by using a couple of private methods in our articles controller and using partials in our views. Clean code should always be a priority once features are built and working as we want so that our code is easy to read and easily maintainable. All changes we made to the application during the video can be found here:
+
+https://github.com/udemyrailscourse/alpha-blog-6/commit/b36fdad0dfb852d07c59b0c7b04e810cd13778e0
+==============================================================
+Production deploy - text follow-up
+We used the following steps to deploy our application to production (using Heroku). If you have not set up a Heroku account and deployed the application at the end of section 3 (including all the setup steps like installing Heroku CLI and creating a heroku app), you are encouraged to do so now before moving forward. If you would rather not deploy to production, then you can safely skip this step.
+
+Steps we followed:
+
+- verify Gemfile
+
+- issue the following command in the terminal bundle install --without production
+
+- make a commit of code
+
+-- git add -A
+
+-- git commit -m "helpful message depending on what you are committing to your repo"
+
+To deploy to heroku:
+
+git push heroku master
+
+To push to GitHub repo:
+
+git push origin master
+
+Since we now have a db component to our application with the articles table, we will need to run migrations in production so the production articles table is created. To run migrations at heroku, you can use the following command:
+
+heroku run rails db:migrate
+
+You can preview your production app by issuing the following command from the terminal:
+
+heroku open
+
+or,
+
+You can directly pull up a browser window and paste in the name of your application. It'll take the following format:
+
+https://yourappname.herokuapp.com
+
+Congratulations on completing Section 4, well done!
+==============================================================
